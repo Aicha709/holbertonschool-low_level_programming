@@ -3,8 +3,7 @@
 #include <stdio.h>
 /**
  * main - entry point
- *
- * Return: 0 in success
+ * Return: 0
  */
 int main(void)
 {

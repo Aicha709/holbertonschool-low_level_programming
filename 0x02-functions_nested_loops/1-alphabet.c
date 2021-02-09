@@ -1,20 +1,17 @@
-include "holberton.h"
+#include "holberton.h"
+
 /**
- * print_alphabet - entry point
+ * print_alphabet - check the code for Holberton School students.
  *
- * Return: 0 in success
+ * Return: void.
  */
+
 void print_alphabet(void)
 {
-int a;
-
-a = 'a';
-while (a <= 'z')
+char x;
+for (x = 'a'; x <= 'z'; x++)
 {
-_putchar(a++);
+	_putchar(x);
 }
 _putchar('\n');
-
-return;
-
 }

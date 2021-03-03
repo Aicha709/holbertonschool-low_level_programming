@@ -1,1 +1,1 @@
- more malloc, more free
+malloc, free

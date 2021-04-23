@@ -1,56 +1,47 @@
-#include <stdio.h>
-#include "dog.h"
 #include <stdlib.h>
+#include "dog.h"
+
 /**
- * _strlength - lentgh of the string
- *@s: pointer
- * Return: the length of string
- */
-int _strlength(char *s)
-{
-int i = 0;
-while (*(s + i) != '\0')
-{
-i++;
-}
-return (i);
-}
-/**
- *new_dog - creat new dog
- *@name: pointer
- *@age: float
- *@owner: pointer
- * Return: pointer
+ * new_dog - creates a new dog
+ * @name: name of dog
+ * @age: age of dog
+ * @owner: owner of dog
+ *
+ * Return: pointer to new dog
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
+	unsigned int nl, ol, i;
+	dog_t *dog;
 
-dog_t *round;
-int i;
-round = malloc(sizeof(dog_t));
-if (round == '\0' || name == '\0' || owner == '\0')
-{
-return (0);
-}
-round->name = malloc(sizeof(char) * (_strlength(name) + 1));
-round->age = age;
-round->owner = malloc(sizeof(char) * (_strlength(owner) + 1));
-if (round->name == '\0' || round->owner == '\0')
-{
-free(round->name);
-free(round->owner);
-free(round);
-return (0);
-}
-for (i = 0; name[i]; i++)
-{
-round->name[i] = name[i];
-}
-round->name[i] = '\0';
-for (i = 0; owner[i]; i++)
-{
-round->owner[i] = owner[i];
-}
-round->owner[i] = '\0';
-return (round);
+	if (name == NULL || owner == NULL)
+		return (NULL);
+	dog = malloc(sizeof(dog_t));
+	if (dog == NULL)
+		return (NULL);
+	for (nl = 0; name[nl]; nl++)
+		;
+	nl++;
+	dog->name = malloc(nl * sizeof(char));
+	if (dog->name == NULL)
+	{
+		free(dog);
+		return (NULL);
+	}
+	for (i = 0; i < nl; i++)
+		dog->name[i] = name[i];
+	dog->age = age;
+	for (ol = 0; owner[ol]; ol++)
+		;
+	ol++;
+	dog->owner = malloc(ol * sizeof(char));
+	if (dog->owner == NULL)
+	{
+		free(dog->name);
+		free(dog);
+		return (NULL);
+	}
+	for (i = 0; i < ol; i++)
+		dog->owner[i] = owner[i];
+	return (dog);
 }

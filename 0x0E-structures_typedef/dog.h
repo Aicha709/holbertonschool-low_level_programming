@@ -1,11 +1,11 @@
-#ifndef DOG_STR
-#define DOG_STR
+#ifndef _DOG_H_
+#define _DOG_H_
+
 /**
- * struct dog - a new prototype of dog object
- * @name: string name.
- * @age: float - name.
- * @owner: string.
- * Return: Always 0.
+ * struct dog - information about dogs
+ * @name: name of dog
+ * @age: age of dog
+ * @owner: owner of dog
  */
 struct dog
 {
@@ -13,10 +13,16 @@ struct dog
 	float age;
 	char *owner;
 };
+
+/**
+ * dog_t - Typedef for struct dog
+ */
 typedef struct dog dog_t;
-int _putchar(char c);
-void free_dog(dog_t *d);
+
+int _putchar(char);
 void init_dog(struct dog *d, char *name, float age, char *owner);
 void print_dog(struct dog *d);
-#endif
+dog_t *new_dog(char *name, float age, char *owner);
+void free_dog(dog_t *d);
 
+#endif /* _DOG_H_ */

@@ -1,21 +1,21 @@
 #include "lists.h"
+
 /**
-  * print_listint - prints all the elements of listint_t
-  * @h: takes in a const struct type *h
-  * Return: returns the counter
+ * print_listint - prints all the elements of a linked list
+ * @h: linked list of type listint_t to print
+ *
+ * Return: number of nodes
  */
 size_t print_listint(const listint_t *h)
 {
-	size_t counter = 0;
-	const listint_t *walker = h;
+	size_t num = 0;
 
-	if (walker == NULL)
-		return (0);
-	while (walker != NULL)
+	while (h)
 	{
-		printf("%d\n", walker->n);
-		walker = walker->next;
-		counter++;
+		printf("%d\n", h->n);
+		num++;
+		h = h->next;
 	}
-	return (counter);
+
+	return (num);
 }
